@@ -1,0 +1,11 @@
+﻿/*body {
+
+}*/
+
+.img-container {
+    display: none;
+}
+
+.active-img {
+    display: block;
+}

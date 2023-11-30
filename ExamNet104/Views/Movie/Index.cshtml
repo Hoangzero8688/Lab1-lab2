@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ExamNet104.ViewModel.MovieVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Add">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rating)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+            @*     Tag helper *@
+                @Html.DisplayFor(modelItem => item.Id)
+
+           
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+                <td>
+                    
+                    @if (item.rating < 3)
+                    {
+                      <p> Bad</p>
+                    }
+                    else if (item.rating < 4)
+                    {
+                        <p> Average</p>
+                    }
+                    else
+                    {
+                        <p> Good</p>
+                    }
+                </td>
+            <td>
+
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+
+                <a asp-action="Edit" asp-controller="Home" asp-route-id="22">Edit ở đây/</a>
+
+
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
